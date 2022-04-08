@@ -6,10 +6,13 @@ app.use(express.json())
 
 const { Employee } = require('./db')
 
+
+
+
 // ---------API ROUTES
 
 // get list of employee
-app.get('/management/employee', function (req,res){
+app.get('api/management/employee', function (req,res){
     Employee.findAll()
     .then(result => {
         res.json({
@@ -19,7 +22,7 @@ app.get('/management/employee', function (req,res){
 })
 
 //get employee by id
-app.get('/management/employee/:id', function (req,res){
+app.get('api/management/employee/:id', function (req,res){
     const id = req.params.id 
     Employee.findByPk(id)
     .then(result => {
@@ -32,7 +35,7 @@ app.get('/management/employee/:id', function (req,res){
 })
 
 // delete employee by id
-app.delete('/management/employee/:id', (req, res) => {
+app.delete('api/management/employee/:id', (req, res) => {
     const id = req.params.id
     Employee.destroy({
         where: {
@@ -45,7 +48,7 @@ app.delete('/management/employee/:id', (req, res) => {
 })
 
 // Save employee
-app.post('/management/employee', (req, res) => {
+app.post('api/management/employee', (req, res) => {
     const data = req.body
     Employee.create(data)
     .then(result => {
@@ -56,7 +59,7 @@ app.post('/management/employee', (req, res) => {
 })
 
 // update an employee
-app.put('/management/employee/:id', (req, res) => {
+app.put('api/management/employee/:id', (req, res) => {
     const id = req.params.id
     const data = req.body
     Employee.update(data, {
