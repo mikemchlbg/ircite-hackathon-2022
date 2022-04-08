@@ -23,7 +23,7 @@ app.get('/element/:id', (req, res) => {
 })
 
 
-// ---------API ROUTES
+// --------- API ROUTES
 
 // get list of employee
 app.get('api/management/employee', function (req,res){
