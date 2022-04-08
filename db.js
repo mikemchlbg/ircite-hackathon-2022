@@ -12,7 +12,7 @@ const sequelize = new Sequelize({
 
 const Employee = EmployeeModel(sequelize, DataTypes)
 
-if (true) {
+if (false) {
     sequelize.sync()
         .then(() => {
             console.log('Database sync completed.')
@@ -20,5 +20,5 @@ if (true) {
 }
 
 module.exports = {
-
+    Employee
 }
