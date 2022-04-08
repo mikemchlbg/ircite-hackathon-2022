@@ -4,7 +4,17 @@ const port = 4000
 
 app.use(express.json())
 
+app.set('views', './views')
+app.set('view engine', 'mustache')
+
+app.engine('html', mustacheExpress())
+
 const { Employee } = require('./db')
+
+
+// HHTP Routes
+
+app.get('/')
 
 // ---------API ROUTES
 
