@@ -12,9 +12,15 @@ app.engine('html', mustacheExpress())
 const { Employee } = require('./db')
 
 
-// HHTP Routes
+// HTTP Routes
 
-app.get('/')
+app.get('/employees', (req, res) => {
+    res.render('view-employees.html')
+})
+
+app.get('/element/:id', (req, res) => {
+    res.render('edit-employees.html')
+})
 
 
 // ---------API ROUTES

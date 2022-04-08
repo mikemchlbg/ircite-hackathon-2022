@@ -19,19 +19,19 @@
           <tr>
             <th scope="row">1</th>
             <td></td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td></td>
+            <td></td>
           </tr>
           <tr>
             <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
           <tr>
             <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
+            <td ></td>
+            <td></td>
           </tr>
         </tbody>
       </table>
@@ -40,6 +40,33 @@
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
+      const api = axios.create({
+        baseURL : 'http://localhost:4000',
+        timeout : 10000
+      });
 
+      api.get('/api/management/employees')
+        .then(response => {
+          const data = response.data; 
+          let htmlContent = '';
+          data.result.foreach (element => {
+            htmlContent +=
+            `
+            <tr>
+            <th scope="row">${element.id}</th>
+            <td>${element.firstName}</td>
+            <td>${element.lastName}</td>
+            <td>${element.position}</td>
+            <td>${element.sickLeaveCreadits}</td>
+            <td>${element.vacationLeaveCredits}</td>
+            <td>
+                  <a href='/employees/${element.id}'>View</a>
+                  <a href='/employees/edit/${element.id}'>Edit</a>
+                  <a href='#' class='delete-employee' id='${element.id}'>Delete</a>
+              </td>
+            </tr>
+            `
+          })
+        })
     </script>
 </body>
