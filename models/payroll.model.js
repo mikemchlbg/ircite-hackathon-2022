@@ -1,5 +1,5 @@
 module.exports = (sequelize, type) => {
-    return sequelize.define('employee', {
+    return sequelize.define('payroll', {
         id: {
             type: type.BIGINT(20),
             primaryKey: true,
